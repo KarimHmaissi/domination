@@ -1,0 +1,94 @@
+
+<div class="main-menu" ng-class="{ slideright: menuOpen }" ng-controller="MainMenuCtrl" >
+<!--   <ul class="text-center">
+    <li class="menu-item" ng-click="menuOpen = true"><h3>Buy</h3></li>
+    <li class="menu-item" ng-click="menuOpen = true"><h3>Owned</h3></li>
+    <li class="menu-item" ng-click="menuOpen = true"><h3>Options</h3></li>
+    
+  </ul> -->
+  <button class="btn btn-lg btn-primary menu-open" ng-click="menuOpen = true">Open</button>
+  <div class="container ">
+    <div class="row">
+      <div class="col-lg-2">
+        <ul class="secondary-menu margin-top-lg">
+          <li ng-click="openMenu('cash')"><p>Business</p></li>
+          <li ng-click="openMenu('influence')"><p>Influence</p></li>
+          <li ng-click="openMenu('event')"><p>Events <span class="event-counter">{{nextEvents.length}}</span></p></li>
+          <li ng-click="openMenu('upgrades')"><p>Upgrades</p></li>
+          <div class="margin-top-lg">
+            <button class="btn btn-close" ng-click="menuOpen = false">Close menu</button>
+          </div>
+          
+        </ul>
+      </div>
+      <div class="col-lg-10 margin-top-lg" ng-show="showCash">
+        <ul class="buy-list" >
+
+          <li ng-repeat="item in buyItems | filter:{ modifierType: 'cash' }" >
+            <div class="buy-list-item" id="{{item.id}}">
+              <div class="row">
+                <div class="col-lg-1">
+                  <img src="{{item.image}}" alt="">
+                </div>
+                <div class="col-lg-3">
+                  <h4>{{item.title}}</h4>
+                  <p><strong>{{item.legal | legal}}</strong></p>
+                  <p>{{item.modifier}} <strong>{{item.modifierType}}</strong> per turn</p>
+                  <p>{{item.policeModifier}} police per turn</p>
+                  <button class="btn btn-primary" ng-click="buyItem(item)"><strong>Buy</strong> Cost ${{item.cost}}</button>
+                </div>
+<!--                 <div class="col-lg-5">
+                  <p class="buy-list-item-text">{{item.description}}</p>
+                </div> -->
+                <!-- <div class="col-lg-3"><p>{{item.owned}}</p></div> -->
+              </div>
+            </div>
+          </li>
+         
+          </li>
+        </ul>
+      </div>
+
+  <div class="col-lg-10 margin-top-lg" ng-show="showInfluence">
+    <ul class="buy-list" >
+
+      <li ng-repeat="item in buyItems | filter:{ modifierType: 'influence' }" ng-show="item.avail">
+        <div class="buy-list-item" id="{{item.id}}">
+          <div class="row">
+            <div class="col-lg-1">
+              <img src="{{item.image}}" alt="">
+            </div>
+            <div class="col-lg-3">
+              <h4>{{item.title}}</h4>
+              <p><strong>{{item.legal | legal}}</strong></p>
+              <p>{{item.modifier}} <strong>{{item.modifierType}}</strong> per turn</p>
+              <p>{{item.policeModifier}} police per turn</p>
+              <button class="btn btn-primary" ng-click="buyItem(item)"><strong>Buy</strong> Cost ${{item.cost}}</button>
+            </div>
+
+          </div>
+        </div>
+      </li>
+     
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-10 margin-top-lg next-events" ng-show="showEventMenu">
+    <ul class="buy-list">
+      <li ng-repeat="event in nextEvents | limitTo:5" ng-click="eventOpen(event, $index)">
+        <div class="row">
+          <div class="col-lg-4">
+            <!-- <p>+{{event.modifier | number:2}}</p> -->
+            <p>New Event</p>
+          </div>
+        </div>
+        
+      </li>
+    </ul>
+  </div>
+    </div>
+  </div>
+
+
+  
+</div>

@@ -1,0 +1,53 @@
+<div class="header" ng-controller="HeaderCtrl">
+<!--   <div class="progress">
+    <div class="progress-bar" style="width: {{player.turnClock * 10}}%;">
+      <span class="sr-only">60% Complete</span>
+    </div>
+  </div> -->
+
+  <nav class="navbar navbar-default center" role="navigation">
+
+<!-- Brand and toggle get grouped for better mobile display -->
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" ng-click="jobClick()"><h3 class="text-muted">Domination</h3></a>
+  <button class="btn btn-primary btn-lg" ng-click="jobClick()">9-5 Job +$1</button>
+</div>
+
+<!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav-pills stats">
+      <li><p class="stat">{{player.level}} <strong>Cash:</strong></p><h4>{{player.cash | currency}} +{{player.cashModifier}}</h4></li>
+      <li>
+        <p class="stat"><strong>Influence: </strong></p><h4>{{player.influence | number:0}} +{{player.influenceModifier}}</h4>
+      </li>
+      <li>
+        <button class="btn btn-primary btn-lg" ng-click="pauseGame()" ng-show="gameRunning">Pause turn clock <strong>Turn: {{player.turn}}</strong></button></li>
+      <li><button class="btn btn-primary btn-lg" ng-click="resumeGame()" ng-show="!gameRunning">Resume turn clock <strong>Turn: {{player.turn}}</strong></button></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="influence-counter">
+
+</div>
+
+<section id="map" ng-controller="MapCtrl" >
+
+    <div class="level-name"><h4>{{player.levelName}}</h4></div>
+
+    <div event=""></div>
+  </div>
+
+  <div id="map_canvas" ui-map="myMap" class="map map-canvas"
+    ui-event="{'map-zoom_changed': 'setZoomMessage(myMap.getZoom())' }"
+    ui-options="mapOptions">
+  </div>
+</section>
+
+<div main-menu=""></div>
